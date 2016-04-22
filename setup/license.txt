@@ -1,0 +1,2 @@
+This work is released under the terms of the GNU GPL. Source can be obtained
+from https://github.com/mjg59/xevilteddy.

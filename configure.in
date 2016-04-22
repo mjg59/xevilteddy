@@ -1,0 +1,11 @@
+AC_INIT(xteddy.c)
+AM_INIT_AUTOMAKE(xteddy, 1.1)
+
+AC_PROG_CC
+
+AC_PATH_XTRA
+AC_CHECK_LIB(Xpm, XpmReadFileToPixmap, , , $X_LIBS -lX11)
+
+AC_DEFINE_UNQUOTED(PIXMAP_PATH, "${prefix}/include/X11/pixmaps") 
+
+AC_OUTPUT(Makefile)

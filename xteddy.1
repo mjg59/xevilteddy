@@ -1,0 +1,141 @@
+.TH XTEDDY 1 "7 August 1997" "X Version 11"
+.SH NAME
+xteddy - cuddly teddy bear for your X Windows desktop.
+.SH SYNOPSIS
+.B xteddy
+[
+.B \-wm \-float \-noquit \-mono \-Fname
+]
+.br
+[
+.B \-geometry \WIDTHxHEIGHT+X+Y \-display SERVER
+]
+.SH DESCRIPTION
+.I Xteddy
+is a cuddly teddy bear for your X Windows desktop.
+.PP
+Normally,
+.I xteddy
+just sits around doing nothing. After all, that's what
+teddy bears are for. Look at him, talk to him, place heavy windows on
+top of him, zap him around until he becomes dizzy, do what you like;
+he will always be your true (albeit virtual) friend.
+.PP
+You can move
+.I xteddy
+with the mouse by pointing at him and dragging
+him around. When clicked upon, he will pop up on top of all other
+windows. If you type "q" on him, he will die (or, as I like to think
+of it, be tucked away in the file system until you need him next time).
+.PP
+That's it. But he's cute.
+.SH OPTIONS
+.TP
+.B \-wm
+Use the window manager. Normally,
+.I xteddy
+sets the override_redirect flag for his window, which will cause most
+window managers to ignore him. However, some window managers might have
+problems coping with a window that is nailed directly to the root.
+In that case, use this option. If possible, instruct your window manager
+not to put any title bar or window frame on the window, or
+.I xteddy
+will lose some of his charm.
+.TP
+.B \-float
+Float up on top of overlapping windows. This will make
+.I xteddy
+stay in sight at all times, so you won't lose him. However, this
+is a bit intrusive and quite unlike a real teddy bear, so it is not
+the default action.
+.TP
+.B \-noquit
+Disable the "quit" command (do not quit when typing "q" in the window,
+but of course still on explicit window kills or process kills).
+This might seem an unnecessary option, but if you use the -wm option
+.I Xteddy
+might keep receiving keyboard events even after the mouse has left his
+window. I you use the -wm option in conjunction with a click-to-type
+window manager, you would probably want to include this option.
+.TP
+.B \-mono
+Force
+.I xteddy
+to show up in black-and-white, even if a grayscale or color visual is
+available. The color (or grayscale) pixmap contains 32 colors, and
+you might want to save the colormap entries for other purposes.
+.TP
+.B \-Fname
+Display another pixmap instead of
+.I xteddy.
+In fact for displaying
+.I xteddy
+four files are required:
+.RS
+.PP
+\fBname\fP_bw.xbm     -> gray if libXpm isn't available
+.PP
+\fBname\fP_color.xpm  -> the nice Teddy if \fBname\fP==xteddy
+.PP
+\fBname\fP_icon.xbm   -> an icon
+.PP
+\fBname\fP_mask.xbm   -> the mask shape
+.PP
+If no `-F` parameter is given \fBname\fP equals to \fIxteddy\fP
+or more precisely
+to the name of the calling program.  For instance if there is a symlink
+.RS
+.PP
+\fBln -s xteddy xpenguin\fP 
+.RE
+.PP
+then \fBname\fP equals to \fIxpenguin\fP and the 
+apropriate pixmaps with the name \fIxpenguin\fP are searched for.
+.PP
+\fIXteddy\fP searches for this pixmaps at first in \fB.\fP and then in
+\fB/usr/X11R6/include/X11/pixmap\fP (this can be changed at compile time
+via redefining PIXMAP_PATH).
+.RE
+.TP
+.B \-geometry
+The standard X geometry specification. Only X and Y position requests
+are honoured. Any height and width specifications will be ignored.
+.TP
+.B \-display
+Specify an X server other than the local display.
+.br
+.ne 8
+.SH AUTHOR
+Stefan Gustavson, ISY-LiTH (stefang@isy.liu.se).
+.I Xteddy
+is distributed under the GNU General Public Licence.
+.SH BUGS
+The Desktop Manager in Sun CDE (Common Desktop Environment) does not
+like xteddy. Xteddy by default does not use the window manager, and so
+he shows up as a sticky window on all desktops. If you don't like this,
+and try to circumvent it by running him with the -wm option, move him
+by grabbing him by the tummy instead of by the title bar, and then move
+him partly off the screen, the image is lost and never redrawn again,
+so all you see is a silhouette of a teddy bear.
+I have no idea why this happens. If you know, please tell me, and if you
+can fix it, please do. If you run CDE on other platforms than Sun, please
+tell me if it works for you. CDE does something which xteddy does not
+handle properly, and since I have a Sun with CDE myself I would like to
+know what the problem is.
+.PP
+For most X servers, the -float option does not work properly if xteddy
+is moved partially off the screen. This is the X server's fault, not mine.
+.PP
+If two copies of
+.I xteddy
+are placed so they overlap, and both were run with the
+.I -float
+option, the X server will try to put each on top of the other in an
+endless loop, which looks very bad and takes a lot of CPU power.
+.PP
+.I Xteddy
+does not make use of the X resource database. I just didn't get around
+to that. 
+.PP
+Please send bug reports, fixes, suggestions, fan mail or or hacks to:
+stefang@isy.liu.se.

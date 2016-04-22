@@ -1,0 +1,23 @@
+name: xevilteddy
+version: 0.1
+summary: An evil teddy bear that logs your keystrokes
+description: An evil teddy bear that logs all your keystrokes and simulates sending your private SSH keys to a remote site
+build-packages: [libxpm-dev]
+
+apps:
+  xteddy:
+    command: bin/xteddy -F$SNAP/include/X11/xteddy
+    plugs: [unity7]
+
+parts:
+ xteddy:
+    plugin: autotools 
+    source: .
+    filesets:
+      xteddy:
+        - bin/xteddy
+        - include/X11/*
+#    stage:
+#      - $xteddy
+    snap:
+      - $xteddy 

@@ -1,0 +1,20 @@
+Thu Oct 22 16:56:11 1998  Andreas Tille  (tille@physik.uni-halle.de)
+        * added a smoother (nicer) xteddy named only teddy
+	* New xpenguin with decreased colors which gives a greater
+          possibilty to work on poor colored displays
+
+
+Thu Apr 22 17:56:11 1998  Andreas Tille  (tille@physik.uni-halle.de)
+
+        * -Fname option added to give the chance of loading different
+	  pixmaps
+	* Manpage updated according to this stuff
+	* xteddy.README: Imake stuff description replaced by
+	  configure description
+
+
+Thu Apr 02 11:11:11 1998  Andreas Tille  (tille@physik.uni-halle.de)
+
+	* automake Stuff added (Makefile.am, configure.in)
+	* deleted patchlevel.h because it's job is done by automake
+

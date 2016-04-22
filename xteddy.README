@@ -1,0 +1,153 @@
+------------------------------------------------------------------------
+xteddy version 1.0.3, by Stefan Gustavson, ISY-LiTH (stefang@isy.liu.se)
+------------------------------------------------------------------------
+
+DESCRIPTION
+
+xteddy is a cuddly teddy bear for your X Windows desktop.
+
+Normally, xteddy just sits around doing nothing. After all, that's what
+teddy bears are for. Look at him, talk to him, place heavy windows on
+top of him, zap him around until he becomes dizzy, do what you like;
+he will always be your true (albeit virtual) friend.
+
+You can move xteddy with the mouse by pointing at him and dragging
+him around. When clicked upon, he will pop up on top of all other
+windows. If you type "q" on him, he will die (or, as I like to think
+of it, be tucked away in the file system until you need him next time).
+
+That's it. But he's cute.
+
+
+OPTIONS
+
+By default, xteddy will set the override_redirect attribute for his
+window, which means that he will be ignored by most window managers
+and live directly on the root window all by himself.
+You cannot iconify or resize him. This is intentional. If you really
+want to be able to iconify xteddy, there is code to communicate with
+a window manager, and I have even specified an icon bitmap for him.
+All it takes is that you supply the command-line option -wm.
+Beware that this will probably cram title bars and other ugly things
+onto xteddy if you do not tell you window manager otherwise.
+To find out how to do that, refer to the manual of your specific
+window manager.
+If you want your teddy close at all times, there is also an option -float
+to make xteddy float up on top of all overlapping windows on the screen.
+This is a bit intrusive and unlike a real teddy bear, so it is not the
+default action. The original to xteddy sits on my real-world desktop,
+and he sometimes gets obscured with paper and stuff, too.
+If you place two copies of "xteddy -float" so that they overlap, you are
+asking for trouble.
+The option -mono forces xteddy to show up in black-and-white, without
+allocationg any colormap entries.
+Xteddy accepts a standard X -geometry option, but will only honour the
+position request. Teddy bears are not scalable.
+
+
+COMPILATION
+
+You will need the shape extension to X and the Xpm library to compile.
+The shape extension to X is bundled with all official distributions of X.
+The Xpm library is included in most distributions, and it is installed
+on most systems. If not, it can be obtained by anonymous FTP to avahi.inria.fr
+or to export.lcs.mit.edu. 
+
+Xteddy is known to compile fine on almost every imagineable X Windows
+system, including X11R4, X11R5, X11R6 and OpenWindows (all versions),
+and almost any Unix system, at least on Solaris, SunOS, Linux, Ultrix,
+HP/UX, AIX, A/UX and IRIX.
+
+To compile, just execute "./configure --prefix=<location>"
+where <location> can be /usr/local or any other directory where
+you want xteddy to be installed. Configure checks whether
+Xpm is installed and defines -DHAVE_LIBXPM if successful.  (Please
+check if this mechanism works right, because it is tested only
+in some cases.  If configure can not detect your Xpm library please
+edit the resulting Makefile manually, that means add 
+-L<path_to_libXpm> to X_LIBS and -I<path_to_Xpm.h> to X_CFLAGS.)
+Than you can type "make xteddy".
+
+
+
+YOUR OWN TEDDY
+
+Now there is a command line option for making your own favourite teddy
+bear for the program.  You need four files xteddy_bw.xbm and
+xteddy_mask.xbm are standard X bitmap files that contain the
+monochrome image and the shape mask.  The color and grayscale images
+are in one file, xteddy_color.xpm, in the X Pixmap format defined for
+the Xpm library. The same shape mask is used for monochrome, grayscale
+and color.  At last you need an icon which is named xteddy_icon.xbm.
+See to it that you get the names right for the variables at
+the top of the file. The image size doesn't really matter, as long as
+it is the same for all three files.  If you make your own teddy,
+please send me a copy. I'll take good care of him.
+
+If you create four files according to this scheme with for instance
+the Linux penguin and name the files xpenguin_... then you can call
+
+       xteddy -Fxpenguin
+
+and instead of the lovely xteddy you will see penguin at your desktop.
+Alternatively you can make a symlink
+
+       ln -s xteddy xpenguin
+
+and the xpenguin pixmaps are searched too.
+
+
+BUGS
+
+Some window managers may experience problems if you don't specify -wm.
+
+If you want to use Xteddy with a virtual window manager without having
+him as a "sticky" window on all desktops, use the option -wm and
+instruct your window manager not to decorate the window with title bar
+and stuff. You might want to add the option -noquit as well to prevent
+accidentally killing xteddy in case he happens to get keyboard focus.
+
+The Desktop Manager in Sun CDE (Common Desktop Environment) does not
+like xteddy at all. If you run him without any parameters, he shows up
+on all your alternate desktops, which might not be all that bad, but if
+you try to circumvent that by running him with the -wm option, and move
+him by grabbing him by the tummy instead of by the title bar, and then
+move him partly off the screen, the image is lost and never redrawn again,
+so all you see is a silhouette of a teddy bear.
+I have no idea why this happens. If you know, please tell me, and if you
+can fix it, please do. If you run CDE on other platforms than Sun, please
+tell me if it works for you. CDE does something which xteddy does not
+handle properly, and since I have a Sun with CDE myself I would like to
+know what the problem is.
+
+On most X servers, the -float option does not work properly if xteddy
+is moved partially off the screen. This is not my fault. It's your
+X server that doesn't know the difference between occlusion and clipping
+and fails to send occlusion notifications to clipped windows.
+
+
+AUTHOR
+
+Written by Stefan Gustavson, ISY-LiTH, 1994-1997.
+  Email address: stefang@isy.liu.se
+
+Xteddy is a program I made entirely for fun. If you make any useful
+changes, additions, improvements, or bug fixes, please send me a message.
+If you like xteddy, remember to smile.
+
+This software is distributed under the GNU General Public License (GPL).
+
+The Xpm library is Copyright 1990-93 GROUPE BULL.
+The X Window System is Copyright the Massachusetts Institute
+of Technology. "X Window System" is a trademark of MIT.
+The teddy bear images are photos of a Tender Teddy from Gund.
+
+
+DISCLAIMER
+
+I make no promises that this software will work for any purpose
+whatsoever. If you hurt yourself or your system, don't blame me.
+Blame xteddy if you like. He doesn't mind.
+
+
+---- This file wast last modified on Aug 7, 1997 ----
