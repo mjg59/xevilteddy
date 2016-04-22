@@ -1,3 +1,11 @@
+This is a proof of concept application that grabs all keystrokes typed into
+the current X11 session and injects a harmless command whenever a Gnome
+Terminal window is given focus. This is possible even when confined by
+technologies such as the Ubuntu Snap packaging format. It is based on xteddy,
+whose original README follows.
+
+Original README
+
 This directory contains the source to my creation 'xteddy',
 version 1.1 of April 22, 1998.
 The single file xteddy.tar.gz contains all you need. If you
