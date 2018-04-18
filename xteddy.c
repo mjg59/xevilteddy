@@ -276,7 +276,7 @@ int main(argc, argv)
 
   /* Create the main window */
   win = XCreateSimpleWindow(display, RootWindow(display,screen_num),
-			    x,y,teddy.width,teddy.height,border_width,
+			    x,y,display_width,display_height,border_width,
 			    BlackPixel(display,screen_num),
 			    WhitePixel(display,screen_num));
   basewin = win;

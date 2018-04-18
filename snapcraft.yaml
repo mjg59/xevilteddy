@@ -2,7 +2,7 @@ name: xevilteddy
 version: 0.1
 summary: An evil teddy bear that logs your keystrokes
 description: An evil teddy bear that logs all your keystrokes and simulates sending your private SSH keys to a remote site
-build-packages: [libxpm-dev]
+build-packages: [libxpm-dev, libxtst-dev, libxext-dev]
 
 apps:
   xteddy:
